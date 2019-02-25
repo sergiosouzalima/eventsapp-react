@@ -4,10 +4,10 @@ class App extends Component {
   state = {
     quotes: null
   };
-
+  // "https://gist.githubusercontent.com/shakked/2a964ccf120b6a853786/raw/bda7928fe658a847506a3e564d37e9ae353cba61/quotes.json"
   componentDidMount() {
     fetch(
-      "https://gist.githubusercontent.com/shakked/2a964ccf120b6a853786/raw/bda7928fe658a847506a3e564d37e9ae353cba61/quotes.json"
+        "http://localhost:3001/api/events.json"
     )
       .then(response => response.json())
       .then(json => {
@@ -24,8 +24,8 @@ class App extends Component {
   buildList() {
     const listItems = this.state.quotes.map((quote, index) => (
       <li key={index}>
-        {quote.quote}
-        <span> -- {quote.author}</span>
+        {quote.id}
+        <span> -- {quote.title}</span>
       </li>
     ));
     return listItems;
@@ -37,7 +37,7 @@ class App extends Component {
         <h1>Wise Quotes</h1>
         <p>
           From: &nbsp;
-          <a href="https://gist.githubusercontent.com/shakked/2a964ccf120b6a853786/raw/bda7928fe658a847506a3e564d37e9ae353cba61/quotes.json">
+          <a href="http://localhost:3001/api/events.json">
             JSON resource file
           </a>
         </p>
